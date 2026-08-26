@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Android Studio resource-style gutter color previews and editing for Java and Kotlin code.">
+  <meta property="og:title" content="ColorPeek">
+  <meta property="og:description" content="Preview and edit source-code colors directly from the editor gutter.">
+  <meta property="og:image" content="https://devcodexstudio.github.io/ColorPeek/images/ColorPeekPreview.png">
+  <meta property="og:url" content="https://devcodexstudio.github.io/ColorPeek/">
+  <meta property="og:type" content="website">
+  <title>ColorPeek — Gutter color previews for Java and Kotlin</title>
+  <link rel="canonical" href="https://devcodexstudio.github.io/ColorPeek/">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="ColorPeek home">
+      <img src="icon.svg" alt="" width="36" height="36">
+      <span>ColorPeek</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="#features">Features</a>
+      <a href="#formats">Formats</a>
+      <a href="#roadmap">Roadmap</a>
+      <a class="nav-cta" href="https://github.com/DevCodexStudio/ColorPeek">GitHub</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">IntelliJ Platform plugin</p>
+        <h1>See the color.<br><span>Edit it in place.</span></h1>
+        <p class="lede">ColorPeek brings the familiar Android Studio resource color experience to Java and Kotlin source code—right in the editor gutter.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://github.com/DevCodexStudio/ColorPeek/releases">Get ColorPeek</a>
+          <a class="button secondary" href="https://github.com/DevCodexStudio/ColorPeek">View source</a>
+        </div>
+        <p class="settings-path"><strong>Settings:</strong> Settings/Preferences → Tools → ColorPeek</p>
+      </div>
+      <div class="color-orbit" aria-hidden="true">
+        <span class="swatch swatch-a"></span>
+        <span class="swatch swatch-b"></span>
+        <span class="swatch swatch-c"></span>
+        <div class="orbit-card">
+          <img src="icon.svg" alt="" width="92" height="92">
+          <code>#FF5733</code>
+        </div>
+      </div>
+    </section>
+
+    <section class="preview" aria-labelledby="preview-title">
+      <div class="section-heading">
+        <p class="eyebrow">Built for the editing flow</p>
+        <h2 id="preview-title">One click from source to color picker</h2>
+        <p>Recognized values receive an immediate gutter swatch. Click it, adjust the color, and ColorPeek writes the result back safely through PSI.</p>
+      </div>
+      <figure class="preview-frame">
+        <img src="images/ColorPeekPreview.png" alt="ColorPeek running in Android Studio with Java and Kotlin gutter swatches and the IDE color picker" width="1873" height="1126">
+      </figure>
+    </section>
+
+    <section class="features" id="features" aria-labelledby="features-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">Focused and native</p>
+        <h2 id="features-title">Feels like part of the IDE</h2>
+      </div>
+      <div class="feature-grid">
+        <article>
+          <span class="feature-number">01</span>
+          <h3>Instant preview</h3>
+          <p>Color swatches appear beside supported Java and Kotlin string values without interrupting your code.</p>
+        </article>
+        <article>
+          <span class="feature-number">02</span>
+          <h3>Click to edit</h3>
+          <p>Use the IDE color picker and write the result back with source-aware PSI replacement.</p>
+        </article>
+        <article>
+          <span class="feature-number">03</span>
+          <h3>Formatting preserved</h3>
+          <p>Keep the original prefix, letter case, and compact/full representation wherever possible.</p>
+        </article>
+        <article>
+          <span class="feature-number">04</span>
+          <h3>Language controls</h3>
+          <p>Enable Java and Kotlin independently from Settings/Preferences → Tools → ColorPeek.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="formats" id="formats" aria-labelledby="formats-title">
+      <div>
+        <p class="eyebrow">Eight recognized forms</p>
+        <h2 id="formats-title">Compact, full, RGB, or ARGB</h2>
+        <p>Both hash and hexadecimal prefixes are supported. Adding transparency automatically promotes RGB to ARGB so alpha is never discarded.</p>
+      </div>
+      <div class="format-list" aria-label="Supported color formats">
+        <code>#RGB</code><code>#ARGB</code><code>#RRGGBB</code><code>#AARRGGBB</code>
+        <code>0xRGB</code><code>0xARGB</code><code>0xRRGGBB</code><code>0xAARRGGBB</code>
+      </div>
+    </section>
+
+    <section class="roadmap" id="roadmap" aria-labelledby="roadmap-title">
+      <div class="section-heading compact">
+        <p class="eyebrow">Language-extensible by design</p>
+        <h2 id="roadmap-title">Java and Kotlin today. More tomorrow.</h2>
+        <p>ColorPeek's provider architecture keeps language logic independent, making future support straightforward.</p>
+      </div>
+      <div class="language-row" aria-label="Language roadmap">
+        <span class="available">Java <small>Available</small></span>
+        <span class="available">Kotlin <small>Available</small></span>
+        <span>Rust <small>Planned</small></span>
+        <span>Python <small>Planned</small></span>
+        <span>TypeScript <small>Planned</small></span>
+        <span>Go <small>Planned</small></span>
+      </div>
+    </section>
+
+    <section class="compatibility">
+      <div>
+        <p class="eyebrow">Broad IDE coverage</p>
+        <h2>Modern and Legacy distributions</h2>
+      </div>
+      <div class="compatibility-cards">
+        <p><strong>Modern</strong><span>IntelliJ Platform 242+</span><small>Kotlin K1 and K2</small></p>
+        <p><strong>Legacy</strong><span>IntelliJ Platform 232–241</span><small>Older Android Studio releases</small></p>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <img src="icon.svg" alt="" width="64" height="64">
+      <h2>Make every color visible.</h2>
+      <p>Open source under the MIT License.</p>
+      <a class="button primary" href="https://github.com/DevCodexStudio/ColorPeek">Explore ColorPeek on GitHub</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 DevCodexStudio · ColorPeek</p>
+    <div>
+      <a href="https://github.com/DevCodexStudio/ColorPeek">Source</a>
+      <a href="https://github.com/DevCodexStudio/ColorPeek/blob/main/LICENSE">MIT License</a>
+      <a href="mailto:kingstageshow@gmail.com">Contact</a>
+    </div>
+  </footer>
+</body>
+</html>

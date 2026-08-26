@@ -1,0 +1,56 @@
+<idea-plugin url="https://devcodexstudio.github.io/ColorPeek/">
+    <id>online.devcodex.colorpeek</id>
+    <name>ColorPeek</name>
+    <vendor url="https://devcodexstudio.github.io/ColorPeek/" email="kingstageshow@gmail.com">DevCodexStudio</vendor>
+    <description><![CDATA[
+        <p>ColorPeek provides Java and Kotlin code with the gutter color preview and editing experience familiar from Android Studio resource files.</p>
+        <p>Color values are shown as swatches beside the source line. Click a swatch to open the IDE color picker; ColorPeek
+        writes the selected value back through PSI while preserving source formatting.</p>
+        <p><img src="https://devcodexstudio.github.io/ColorPeek/images/ColorPeekPreview.png"
+                alt="ColorPeek gutter preview and color picker" /></p>
+        <p><b>Features</b></p>
+        <ul>
+            <li>Java string literal and Kotlin literal string template support.</li>
+            <li>RGB, ARGB, RRGGBB, and AARRGGBB values with <code>#</code> or <code>0x</code>/<code>0X</code> prefixes.</li>
+            <li>Independent Java and Kotlin controls.</li>
+            <li>Extensible language providers for future Rust, Python, and other language support.</li>
+        </ul>
+        <p><b>Settings:</b> Settings/Preferences &rarr; Tools &rarr; ColorPeek</p>
+    ]]></description>
+    <change-notes><![CDATA[
+        <b>1.0.0</b>
+        <ul>
+            <li>Java and Kotlin gutter color previews with click-to-edit color picker integration.</li>
+            <li>Eight supported hexadecimal RGB/ARGB formats with source-preserving PSI write-back.</li>
+            <li>Persistent per-language controls under Settings/Preferences &rarr; Tools &rarr; ColorPeek.</li>
+            <li>Kotlin K1/K2 support and an extensible architecture for future languages.</li>
+        </ul>
+    ]]></change-notes>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.java</depends>
+    <depends>org.jetbrains.kotlin</depends>
+
+    <extensionPoints>
+        <extensionPoint name="languageColorProvider"
+                        interface="online.devcodex.colorpeek.provider.LanguageColorProvider"
+                        dynamic="true"/>
+    </extensionPoints>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <colorProvider implementation="online.devcodex.colorpeek.provider.CompositeElementColorProvider"/>
+        <applicationConfigurable id="online.devcodex.colorpeek.settings"
+                                 parentId="tools"
+                                 displayName="ColorPeek"
+                                 instance="online.devcodex.colorpeek.settings.ColorPeekConfigurable"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="online.devcodex.colorpeek">
+        <languageColorProvider implementation="online.devcodex.colorpeek.provider.java.JavaColorProvider"/>
+        <languageColorProvider implementation="online.devcodex.colorpeek.provider.kotlin.KotlinColorProvider"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="org.jetbrains.kotlin">
+        <supportsKotlinPluginMode supportsK1="true" supportsK2="true"/>
+    </extensions>
+</idea-plugin>
