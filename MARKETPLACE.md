@@ -6,8 +6,8 @@
 - [x] Replace repository-owner placeholders with `DevCodexStudio`.
 - [x] Add the vendor website and contact email to both `plugin.xml` files.
 - [x] Create the `DevCodexStudio` JetBrains Marketplace Vendor, accept the Developer Agreement, and declare Non-trader status.
-- [ ] Confirm `https://devcodexstudio.github.io/ColorPeek/` after the repository is public and the GitHub Pages workflow completes.
-- [ ] Enable GitHub Security advisories so `SECURITY.md` has a private reporting destination.
+- [x] Confirm `https://devcodexstudio.github.io/ColorPeek/` after the repository is public and the GitHub Pages workflow completes.
+- [x] Enable GitHub private vulnerability reporting so `SECURITY.md` has a private reporting destination.
 
 ## Build and verification
 
