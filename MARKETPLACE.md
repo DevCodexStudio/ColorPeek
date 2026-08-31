@@ -25,8 +25,8 @@
 
 Upload both files under the same plugin entry and stable channel:
 
-- `build/distributions/ColorPeek-1.0.0.zip` — build `242+`.
-- `legacy/build/distributions/ColorPeek-1.0.0-legacy.232.zip` — builds `232–241.*`.
+- `build/distributions/ColorPeek-1.1.0.zip` — build `242+`.
+- `legacy/build/distributions/ColorPeek-1.1.0-legacy.232.zip` — builds `232–241.*`.
 
 Select accurate tags, add screenshots of the gutter preview/editing experience in currently supported languages and the settings page, and link the public source repository and license. Describe Java and Kotlin as current support and Rust, Python, and other languages as roadmap items rather than available features. Keep both compatibility ranges unchanged so Marketplace selects the correct artifact.
 

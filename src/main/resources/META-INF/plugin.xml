@@ -7,23 +7,23 @@
         <p>Color values are shown as swatches beside the source line. Click a swatch to open the IDE color picker; ColorPeek
         writes the selected value back through PSI while preserving source formatting.</p>
         <p><img src="https://devcodexstudio.github.io/ColorPeek/images/ColorPeekPreview.png"
+                width="600" style="max-width: 100%; height: auto;"
                 alt="ColorPeek gutter preview and color picker" /></p>
         <p><b>Features</b></p>
         <ul>
             <li>Java string literal and Kotlin literal string template support.</li>
             <li>RGB, ARGB, RRGGBB, and AARRGGBB values with <code>#</code> or <code>0x</code>/<code>0X</code> prefixes.</li>
             <li>Independent Java and Kotlin controls.</li>
+            <li>Optional eight-digit ARGB numeric color previews, with separate string/numeric controls and Compose Color avoidance enabled by default.</li>
             <li>Extensible language providers for future Rust, Python, and other language support.</li>
         </ul>
         <p><b>Settings:</b> Settings/Preferences &rarr; Tools &rarr; ColorPeek</p>
     ]]></description>
     <change-notes><![CDATA[
-        <b>1.0.0</b>
+        <b>1.1.0</b>
         <ul>
-            <li>Java and Kotlin gutter color previews with click-to-edit color picker integration.</li>
-            <li>Eight supported hexadecimal RGB/ARGB formats with source-preserving PSI write-back.</li>
-            <li>Persistent per-language controls under Settings/Preferences &rarr; Tools &rarr; ColorPeek.</li>
-            <li>Kotlin K1/K2 support and an extensible architecture for future languages.</li>
+            <li>Add optional numeric ARGB previews and editing, plus persistent string/numeric and Compose avoidance settings.</li>
+            <li>Constrain the description preview image for correct rendering in JetBrains Marketplace and IDE plugin dialogs.</li>
         </ul>
     ]]></change-notes>
 

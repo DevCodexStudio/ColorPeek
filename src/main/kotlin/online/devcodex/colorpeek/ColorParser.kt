@@ -4,6 +4,34 @@ import java.awt.Color
 
 /** Parses and formats the exact hexadecimal forms supported by ColorPeek. */
 object ColorParser {
+    private val numericPattern = Regex("^(0[xX])([0-9a-fA-F](?:_?[0-9a-fA-F]){7})([uU][lL]?|[lL])?$")
+
+    fun parseNumber(text: String): Color? {
+        val match = numericPattern.matchEntire(text) ?: return null
+        return parse(match.groupValues[1] + match.groupValues[2].replace("_", ""))
+    }
+
+    fun formatNumber(color: Color, original: String): String? {
+        val match = numericPattern.matchEntire(original) ?: return null
+        val source = match.groupValues[2]
+        val formatted = format(color, match.groupValues[1] + source.replace("_", "")) ?: return null
+        val digits = formatted.substring(2).iterator()
+        return match.groupValues[1] + source.map { if (it == '_') '_' else digits.nextChar() }.joinToString("") + match.groupValues[3]
+    }
+
+    /** Kotlin infers unsuffixed positive hex literals as Int or Long by magnitude. */
+    fun formatKotlinNumber(color: Color, original: String, expectedLong: Boolean = false): String? {
+        val formatted = formatNumber(color, original) ?: return null
+        val match = numericPattern.matchEntire(original) ?: return null
+        if (match.groupValues[3].isNotEmpty()) return formatted
+        val wasLong = expectedLong || match.groupValues[2].replace("_", "").toLong(16) > Int.MAX_VALUE
+        val nowLong = color.alpha >= 128
+        return when {
+            wasLong && !nowLong -> formatted + "L"
+            !wasLong && nowLong -> "$formatted.toInt()"
+            else -> formatted
+        }
+    }
     private val pattern = Regex("^(#|0[xX])([0-9a-fA-F]{3}|[0-9a-fA-F]{4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$")
 
     fun parse(text: String): Color? {

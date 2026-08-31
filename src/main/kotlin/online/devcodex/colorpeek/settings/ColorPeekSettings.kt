@@ -8,7 +8,12 @@ import com.intellij.openapi.components.Storage
 @State(name = "ColorPeekSettings", storages = [Storage("ColorPeek.xml")])
 @Service(Service.Level.APP)
 class ColorPeekSettings : PersistentStateComponent<ColorPeekSettings.State> {
-    data class State(var enabledLanguages: MutableSet<String> = mutableSetOf("JAVA", "kotlin"))
+    data class State(
+        var enabledLanguages: MutableSet<String> = mutableSetOf("JAVA", "kotlin"),
+        var stringColors: Boolean = true,
+        var numericColors: Boolean = false,
+        var skipComposeColors: Boolean = true,
+    )
 
     private var currentState = State()
 

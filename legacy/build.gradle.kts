@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "online.devcodex.colorpeek"
-version = "1.0.0-legacy.232"
+version = "1.1.0-legacy.232"
 
 repositories {
     mavenCentral()
@@ -52,4 +52,8 @@ intellijPlatform {
             untilBuild = "241.*"
         }
     }
+}
+
+tasks.test {
+    systemProperty("idea.load.plugins.id", "online.devcodex.colorpeek")
 }

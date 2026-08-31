@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "online.devcodex.colorpeek"
-version = "1.0.0"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -43,4 +43,9 @@ tasks.register("buildReleaseArtifacts") {
     group = "distribution"
     description = "Builds the modern and legacy ColorPeek plugin distributions."
     dependsOn("buildPlugin", ":legacy:buildPlugin")
+}
+
+tasks.test {
+    // Only the plugin and its dependencies; unrelated bundled plugins may require private test fixtures.
+    systemProperty("idea.load.plugins.id", "online.devcodex.colorpeek")
 }

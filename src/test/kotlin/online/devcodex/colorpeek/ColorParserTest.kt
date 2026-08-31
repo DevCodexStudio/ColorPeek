@@ -7,6 +7,20 @@ import java.awt.Color
 
 class ColorParserTest {
     @Test
+    fun preservesKotlinInferredIntegerTypeAcrossAlphaBoundary() {
+        assertEquals("0x00112233L", ColorParser.formatKotlinNumber(Color(0x11, 0x22, 0x33, 0), "0xFF112233"))
+        assertEquals("0xFF112233.toInt()", ColorParser.formatKotlinNumber(Color(0x11, 0x22, 0x33), "0x00112233"))
+        assertEquals("0xFF112233u", ColorParser.formatKotlinNumber(Color(0x11, 0x22, 0x33), "0x00112233u"))
+    }
+    @Test
+    fun numericColorsRequireEightDigitsAndPreserveSyntax() {
+        assertEquals(Color(0xe2, 0xaa, 0x8a), ColorParser.parseNumber("0xFF_E2_AA_8AuL"))
+        assertEquals("0X80_ab_cd_efL", ColorParser.formatNumber(Color(0xab, 0xcd, 0xef, 0x80), "0Xff_11_22_33L"))
+        listOf("0xFFF", "0xFFFF", "0xFFFFFF", "0xFFFFFFFFF", "12345678", "0x_12345678", "0x12345678.toInt()", "#12345678").forEach {
+            assertNull(ColorParser.parseNumber(it), it)
+        }
+    }
+    @Test
     fun parsesAllSupportedLengthsAndPrefixes() {
         assertEquals(Color(0xff, 0x55, 0x33), ColorParser.parse("#F53"))
         assertEquals(Color(0xff, 0x55, 0x33, 0xaa), ColorParser.parse("#AF53"))
